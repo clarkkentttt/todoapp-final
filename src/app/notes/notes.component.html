@@ -1,14 +1,12 @@
 <div class="container">
     <h1>Notes</h1>
-    <div >
-        <h3 ></h3>
+    <div *ngFor="let note of notesArray; let i=index">
+        <h3 (click)="onEmitNote(i)">{{ note.noteName}}</h3>
         <hr>
-
+        
     </div>
 
     <div class="container-3">
         <button id="add-notes" (click)="openAddNotes()">+</button>
-
     </div>
-
 </div>

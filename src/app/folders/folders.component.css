@@ -16,9 +16,9 @@ body {
 
 .container {
     width: 25%;
-    min-width: 250px; 
+    min-width: 400px; 
     height: 100vh;
-    background-color: skyblue;
+    background-color: rgb(226, 238, 243);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     float: left; 
@@ -52,12 +52,13 @@ span {
     padding: 10px;
     border-radius: 50%;
     cursor: pointer; 
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 6px rgba(208, 188, 188, 0.1); 
     transition: background-color 0.3s, transform 0.3s; 
+    padding: 25px;
 }
 
 #add-folder:hover {
-    background-color: #f1f1f1;
+    background-color: #eee0e0;
    
 }
 

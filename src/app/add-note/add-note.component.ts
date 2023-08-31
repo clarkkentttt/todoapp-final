@@ -1,6 +1,7 @@
 import { Component,  Inject  } from '@angular/core';
 import { ManageService } from '../manage.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogRef } from '@angular/cdk/dialog';
 
 interface Note {
   noteId: any,
@@ -17,7 +18,7 @@ interface Note {
 export class AddNoteComponent {
   
 
-  constructor(private service: ManageService, @Inject(MAT_DIALOG_DATA) public value: any) {}
+  constructor(private service: ManageService, @Inject(MAT_DIALOG_DATA) public value: any, private dialogRef: MatDialog) {}
 
     
   generateId() {
@@ -25,35 +26,19 @@ export class AddNoteComponent {
   }
  
   onSubmit(event: any) {
-    
-    let data = this.service.getData()
-    console.log(this.value)
+  let data = this.service.getData() 
+  let newNote: Note = {
+    noteId: this.generateId(),
+    noteName: event['note-name'], 
+    noteContent: 'ffsdfsd'
+  }
+  
+  this.service.saveData(this.value, newNote)
+  this.dialogRef.closeAll();
 
-   for (let i=0; i < data.length; i++) {
-    for (let j=0; j < data[0].length; j++) {
-
-
-      if (data[i][j].folderId == this.value) {
-        console.log('Entered the loopp')
-    
-          let newNote: Note[] = [{
-            noteId: this.generateId(),
-            noteName: event, 
-            noteContent: 'ffsdfsd'
-      
-          }]
-          
-          data[i][j].notes.push(newNote);
-          console.log(data[i][j].notes)
-
-          localStorage.setItem('Folders', JSON.stringify(data))
-          break;
-      }
-
-    }
-   }
-      
 
   }
+
+  
 
 }

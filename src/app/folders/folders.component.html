@@ -1,22 +1,15 @@
 <div class="container">
     <h1>Folders</h1>
     
-    <div class="container-2" *ngFor="let folder of folder_array; let i = index">
-        <div *ngFor="let f of folder" >
+    <div class="container-2" *ngFor="let folder of folderArray; let i = index">
                 <h3 
-                (click)="onEmitFolder(f.folderId)"
-                
-                >{{ f.folderName }} <span><button
+                (click)="onEmitFolder(i)"
+                >{{ folder.folderName }} <span><button
                      (click)="onDelete(i)"
                      >Delete</button>
                     </span>
                 </h3>
-
             <hr>
-
-
-
-        </div>
             
     </div>
     <div class="container-3">

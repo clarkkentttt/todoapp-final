@@ -8,10 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'todoapp';
 
-  folderId: string = '';
+  folderIndex: string = '';
+  folderIndex2: any;
+  noteIndex: any;
 
   folderEmit(event: any) {
-    this.folderId = event['folderId']
+    this.folderIndex = event['folderIndex']
 
+  }
+
+  noteEmit(event: any) {
+    console.log(event)
+    this.folderIndex2 = event.folderIndex
+    this.noteIndex = event.noteIndex;
   }
 }

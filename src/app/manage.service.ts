@@ -13,36 +13,31 @@ export class ManageService {
 
   constructor() { }
 
-  array: Data[][] = []; 
+  array: Data[] = []; 
 
   storeFolder(folderId: any, folderName: string, notes: any[]) {
-    let newData: Data[] = [{
-      folderId: folderId.toString(),
-      folderName: folderName,
-      notes: notes
-    }];
-
+    let newData: Data = {
+        folderId: folderId.toString(),
+        folderName: folderName,
+        notes: notes
+    };
     this.array.push(newData);
     localStorage.setItem('Folders', JSON.stringify(this.array));
-  }
-
-
-  getData() {
-    // Retrieve the value associated with the key 'Folders' from localStorage
-  const dataJSON = localStorage.getItem('Folders');
-    
-    // Parse the JSON data and return it
-    return JSON.parse(dataJSON || '');
 }
 
 
-// deleteFolder (id: string) {
-//   localStorage.removeItem(id);
-// }
 
-// storeNote(note: any[]) {
-//   return note
+getData() {
+  const storedDataJSON = localStorage.getItem('Folders');
+  const defaultData = 'Data not found';
+  return JSON.parse(storedDataJSON || defaultData);
+}
 
-// }
+saveData(index: number, newData: any) {
+  const dataArray = this.getData();
+  dataArray[index].notes.push(newData);
+  localStorage.setItem('Folders', JSON.stringify(dataArray))
+
+}
 
 }

@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { AddNoteComponent } from './add-note/add-note.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddNoteComponent } from './add-note/add-note.component';
     NotesComponent,
     NoteComponent,
     AddFolderComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    CardComponent
     
   ],
   imports: [

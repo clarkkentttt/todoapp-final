@@ -1,0 +1,8 @@
+<div class="container">
+    <form #temp="ngForm">
+      <input type="text" placeholder="Enter Note Name" ngModel name="note-name">
+      <button id="create-note" (click)=" onSubmit(temp.value)">Submit</button><br/>
+    </form>
+  </div>
+
+

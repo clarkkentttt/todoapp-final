@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Folders</h1>
+    
+    <div class="container-2" *ngFor="let folder of folder_array; let i = index">
+        <div *ngFor="let f of folder" >
+                <h3 
+                (click)="onEmitFolder(f.folderId)"
+                
+                >{{ f.folderName }} <span><button
+                     (click)="onDelete(i)"
+                     >Delete</button>
+                    </span>
+                </h3>
+
+            <hr>
+
+
+
+        </div>
+            
+    </div>
+    <div class="container-3">
+        <button id="add-folder" (click)="addFolder()">+</button>
+
+    </div>
+    
+</div>

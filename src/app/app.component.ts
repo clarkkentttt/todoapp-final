@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todoapp';
+
+  folderId: string = '';
+
+  folderEmit(event: any) {
+    this.folderId = event['folderId']
+
+  }
 }

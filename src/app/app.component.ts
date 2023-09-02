@@ -10,16 +10,28 @@ export class AppComponent {
 
   folderIndex: string = '';
   folderIndex2: any;
+  noteIndex2: any;
   noteIndex: any;
+  randomNumber: any
 
   folderEmit(event: any) {
+
     this.folderIndex = event['folderIndex']
+    this.randomNumber = event['randomId']
+
 
   }
 
   noteEmit(event: any) {
-    console.log(event)
+ 
     this.folderIndex2 = event.folderIndex
     this.noteIndex = event.noteIndex;
+  }
+
+
+  mainCardEmit(event: any) {
+    console.log(event)
+    this.noteIndex2 = event.funNoteIndex
+
   }
 }

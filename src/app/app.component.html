@@ -1,7 +1,12 @@
 <div class="row">
 <app-folders (folderValueEmit)="folderEmit($event)"></app-folders>
-<app-notes [folderindex]="folderIndex"  (onEmitNoteMain)="noteEmit($event)"></app-notes>
-<app-card [folderindex]="folderIndex2" [noteindex]="noteIndex"></app-card>
+<app-notes [folderindex]="folderIndex"  (onEmitNoteMain)="noteEmit($event)" [noteindex]="noteIndex2"  ></app-notes>
+
+<app-box-card *ngIf="noteIndex === undefined; else appCard "></app-box-card>
+<ng-template #appCard>
+    <app-card [folderindex]="folderIndex2" [noteindex]="noteIndex" (cardEmitter)="mainCardEmit($event)"></app-card>
+</ng-template>
+
 
 </div>
 

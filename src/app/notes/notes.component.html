@@ -1,7 +1,10 @@
 <div class="container">
     <h1>Notes</h1>
-    <div *ngFor="let note of notesArray; let i=index">
-        <h3 (click)="onEmitNote(i)">{{ note.noteName}}</h3>
+    <div *ngFor="let note of notesArray; let i=index" lass="container-2">
+        <h3 (click)="onEmitNote(i)"
+        [ngClass]="{'selected-folder': i === clickedNoteIndex}"
+        >{{ note.noteName}}
+    </h3>
         <hr>
         
     </div>

@@ -35,6 +35,11 @@ button:hover {
 }
 
 
+.buttonContainer {
+    margin-top: 15px;
+}
+
+
 
 button:disabled {
     background-color: #ccc;

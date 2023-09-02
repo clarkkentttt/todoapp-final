@@ -11,12 +11,18 @@ import { ManageService } from '../manage.service';
 export class NotesComponent implements OnInit, OnChanges {
   @Input() folderindex: any;
   @Output('onEmitNoteMain') emitNote = new EventEmitter<any>();
-
+  @Input() noteindex: any;
+  @Input() randomId: any;
   notesArray: any[] = []; 
+  clickedNoteIndex: number | null = null;
 
-  constructor(private dialogRef: MatDialog, private service: ManageService) {}
+  constructor(private dialogRef: MatDialog, private service: ManageService) {
+   
+    
+  }
 
   onEmitNote (noteindex: number) {
+    this.clickedNoteIndex = noteindex
     this.emitNote.emit({
       folderIndex: this.folderindex,
       noteIndex: noteindex
@@ -24,20 +30,32 @@ export class NotesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.folderindex = null;
     this.fetchData();
+   
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes.folderindex) {
-        this.fetchData();
-      }
+    // if (this.folderindex != '' || this.noteindex != '') {
+    //   console.log(this.folderindex);
+      
+    // }
+
+    if (changes.folderindex || changes.noteindex || changes.randomId) {
+      this.fetchData();
+    } 
   }
+  
 
   fetchData() {
     const data = this.service.getData();
   
-    this.notesArray = data[this.folderindex].notes;
-    console.log(this.notesArray);
+    if (this.folderindex === null) {
+      this.notesArray = []
+    } else {
+      this.notesArray = data[this.folderindex].notes
+    }
+  
   }
 
   openAddNotes() {

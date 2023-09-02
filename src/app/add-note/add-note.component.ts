@@ -1,14 +1,8 @@
 import { Component,  Inject  } from '@angular/core';
 import { ManageService } from '../manage.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogRef } from '@angular/cdk/dialog';
 
-interface Note {
-  noteId: any,
-  noteName: string;
-  noteContent: string
-}
-
+import { Note } from '../models/note.model';
 
 @Component({
   selector: 'app-add-note',
@@ -26,19 +20,21 @@ export class AddNoteComponent {
   }
  
   onSubmit(event: any) {
-  let data = this.service.getData() 
+  
   let newNote: Note = {
     noteId: this.generateId(),
     noteName: event['note-name'], 
-    noteContent: 'ffsdfsd'
+    noteContent: ''
   }
-  
-  this.service.saveData(this.value, newNote)
+  if (event['note-name'] === '') {
+    alert('Please select the note name');
+    
+  } else {
+    this.service.saveData(this.value, newNote)
+  }
   this.dialogRef.closeAll();
 
-
   }
 
   
-
 }

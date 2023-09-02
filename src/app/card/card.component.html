@@ -1,10 +1,10 @@
 <div class="container">
     <div>
-        <textarea rows="50" cols="105" [(ngModel)]="notecontent"></textarea>
+        <textarea rows="30" cols="105" [(ngModel)]="notecontent"></textarea>
     </div>
-    <div>
+    <div class="buttonContainer">
         <button id="save" (click)="saveNoteContent()">Save</button>
-        <button id="delete">Delete</button>
+        <button id="delete" (click)="deleteNoteContent()" (click)="funCardEmit()">Delete</button>
 
     </div>
 </div>

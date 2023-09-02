@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog'
 
 import { AddFolderComponent} from '../add-folder/add-folder.component';
 import { ManageService } from '../manage.service';
+import { Folder } from '../models/folder.model';
 
 @Component({
   selector: 'app-folders',
@@ -12,12 +13,17 @@ import { ManageService } from '../manage.service';
 export class FoldersComponent implements OnInit, OnChanges{
   @Output('folderValueEmit') folderValue = new EventEmitter<any>();
 
+  clickedFolderIndex: number | null = null;
+
+ 
   onEmitFolder(event: any) {
+    this.clickedFolderIndex = event; 
     this.folderValue.emit({
-      'folderIndex': event, 
+      'folderIndex': event
+      // 'randomId': Math.random()
     })
   }
-   folderArray: any = [];
+   folderArray: Folder[] = [];
 
   constructor(private dialogRef: MatDialog, private service: ManageService) {}
   ngOnChanges(changes: SimpleChanges): void {
@@ -26,10 +32,12 @@ export class FoldersComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.fetchData();
+    
   }
 
   fetchData () {
     this.folderArray = this.service.getData();
+  
   }
  
 addFolder() {
@@ -37,12 +45,14 @@ addFolder() {
 }
 
 onDelete(index: number) {
-    let data = this.service.getData();
-    data.splice(index, 1);
-    localStorage.setItem('Folders', JSON.stringify(data));
-    this.fetchData();
+  this.service.onDeleteFolder(index)
+  this.fetchData();
+
+    // window.location.reload();
    
   }
+
+ 
 
  
   

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FoldersComponent } from './folders/folders.component';
 import { NotesComponent } from './notes/notes.component';
-import { NoteComponent } from './note/note.component';
+
 import { FormsModule } from '@angular/forms';
 // import { MatDialogModule } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
@@ -18,16 +18,17 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { CardComponent } from './card/card.component';
+import { BoxCardComponent } from './box-card/box-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FoldersComponent,
     NotesComponent,
-    NoteComponent,
     AddFolderComponent,
     AddNoteComponent,
-    CardComponent
+    CardComponent,
+    BoxCardComponent
     
   ],
   imports: [

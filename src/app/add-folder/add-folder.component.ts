@@ -10,7 +10,6 @@ import { ManageService } from '../manage.service';
 })
 export class AddFolderComponent {
 
-  @Output('addFolder') addFolderEmit = new EventEmitter<any>();
 
   constructor(private service: ManageService, private dialogRef: MatDialog) {}
 

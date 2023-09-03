@@ -1,10 +1,28 @@
 <div class="container">
+    <div class="container">
+        <div>
+            <textarea rows="45" cols="105" [(ngModel)]="notecontent"></textarea>
+        </div>
+        <div class="buttonContainer">
+            <button id="save" (click)="saveNoteContent()">Save</button>
+            <button id="delete" (click)="deleteNoteContent()" (click)="funCardEmit()">Delete</button>
+    
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container">
     <div>
-        <textarea rows="30" cols="105" [(ngModel)]="notecontent"></textarea>
+        <textarea rows="45" cols="105" [(ngModel)]="notecontent"></textarea>
     </div>
     <div class="buttonContainer">
         <button id="save" (click)="saveNoteContent()">Save</button>
-        <button id="delete" (click)="deleteNoteContent()" (click)="funCardEmit()">Delete</button>
-
+        <button id="delete" (click)="deleteNoteContent()">Delete</button>
     </div>
 </div>
+
+<!-- <ng-template #cardContent>
+    <div>Hi works</div>
+</ng-template> --> 

@@ -1,20 +1,31 @@
 <div class="container">
+
     <h1>Folders</h1>
     
-    <div class="container-2" *ngFor="let folder of this.folderArray; let i = index">
-                <h3 
+    <div class="single-unit-folder" *ngFor="let folder of this.folderArray; let i = index">
+                <div class="folder-container"
                 (click)="onEmitFolder(i)"
-                [ngClass]="{'selected-folder': i === clickedFolderIndex}"
-                >{{ folder.folderName }}<button class="deleteButton"
-                     (click)="onDelete(i)"
-                     >Delete</button>
-                
-                </h3>
-            <hr>
-            
+                >
+                    <div class="text-container">
+                        <h3 
+                        [ngClass]="{'selected-folder': i === clickedFolderIndex}"
+                        >{{ folder.folderName }}
+                        </h3>
+                    </div>
+                   <div class="delete-button">
+                    <button
+                    (click)="onDelete(i)"
+                    >
+                    <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete">
+                </button>
+                   </div>
+                </div>
+                <hr style="border-width: 2px; color: black;">            
     </div>
-    <div class="container-3">
-        <button id="add-folder" (click)="addFolder()">+</button>
+    <div class="add-folder">
+        <div class="button-add-folder" (click)="addFolder()">
+            <h1 class="button-title">+</h1>
+        </div>
 
     </div>
     

@@ -12,15 +12,28 @@ import { Folder } from '../models/folder.model';
 })
 export class FoldersComponent implements OnInit, OnChanges{
   @Output('folderValueEmit') folderValue = new EventEmitter<any>();
+  @Output('deleteValueEmitter') deleteEmitValue = new EventEmitter<any>();
 
   clickedFolderIndex: number | null = null;
+
+  generateNumber() {
+    return Math.random() * 10;
+  }
+
+  deleteEmit() {
+    
+    this.deleteEmitValue.emit({
+      'randomNumber': this.generateNumber()
+
+    })
+  }
 
  
   onEmitFolder(event: any) {
     this.clickedFolderIndex = event; 
     this.folderValue.emit({
-      'folderIndex': event
-      // 'randomId': Math.random()
+      'folderIndex': event,
+     
     })
   }
    folderArray: Folder[] = [];
@@ -46,13 +59,13 @@ addFolder() {
 
 onDelete(index: number) {
   this.service.onDeleteFolder(index)
+  this.deleteEmit();
   this.fetchData();
+  this.clickedFolderIndex = null
+ 
 
-    // window.location.reload();
    
   }
-
- 
 
  
   

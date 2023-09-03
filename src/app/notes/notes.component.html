@@ -1,15 +1,32 @@
 <div class="container">
     <h1>Notes</h1>
-    <div *ngFor="let note of notesArray; let i=index" lass="container-2">
-        <h3 (click)="onEmitNote(i)"
-        [ngClass]="{'selected-folder': i === clickedNoteIndex}"
-        >{{ note.noteName}}
-    </h3>
-        <hr>
-        
+    <div *ngIf="notesArray.length === 0; else addNotes">
+        <div class="note-text">
+            <h1>
+                Add Notes!
+    
+            </h1>
+        </div>    
+    </div>
+ 
+    <div class="add-note">
+        <div class="button-add-notes" (click)="openAddNotes()">
+            <h1 class="button-title">+</h1>
+        </div>
+
     </div>
 
-    <div class="container-3">
-        <button id="add-notes" (click)="openAddNotes()">+</button>
-    </div>
 </div>
+<ng-template #addNotes>
+    <div *ngFor="let note of notesArray; let i=index" class="single-unit-note">
+        <div class="text-container">
+            <h3 (click)="onEmitNote(i)"
+            [ngClass]="{'selected-folder': i === clickedNoteIndex}"
+            >{{ note.noteName}}
+        </h3>
+
+        </div>
+      
+    <hr style="border-width: 2px; color: black;">     
+    </div>    
+</ng-template>

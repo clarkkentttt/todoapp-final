@@ -13,6 +13,8 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() noteindex: any;
   updatedData: any;
   @Output('cardEmitter') cardEmit = new EventEmitter<any>();
+  @Output('deleteNoteEmitter') deleteNote = new EventEmitter<any>(); 
+
 
   notecontent: string = '';
 
@@ -20,6 +22,16 @@ export class CardComponent implements OnInit, OnChanges {
     this.folderindex = null;
     this.noteindex = null;
    
+  }
+
+  generateRandomNum() {
+    return Math.random() * 10;
+  }
+
+  deleteNoteAlert() {
+    this.deleteNote.emit({
+      randomNumber: this.generateRandomNum()
+    })
   }
 
   funCardEmit() {
@@ -57,32 +69,50 @@ export class CardComponent implements OnInit, OnChanges {
     } else {
       data[this.folderindex].notes[this.noteindex].noteContent = this.notecontent;
       localStorage.setItem('Folders', JSON.stringify(data));
-      this.notecontent = ''
       alert('Note has been Saved!')
 
     }
 
   }
 
+  // deleteNoteContent() {
+  //   let data = this.service.getData();
+    
+  //   if (this.noteindex === undefined) {
+  //     alert('Select a note to delete')
+
+  //   } else {
+  //     if (data[this.folderindex].notes.length === 1) {
+  //       data[this.folderindex].notes = []; 
+  //     } else {
+  //       data[this.folderindex].notes.splice(this.noteindex, 1);
+  //     }
+  //     localStorage.setItem('Folders', JSON.stringify(data));
+    
+  //     this.notecontent = '';
+  //     alert('Note has been Deleted')
+  //   }
+   
+
   deleteNoteContent() {
     let data = this.service.getData();
     
     if (this.noteindex === undefined) {
-      alert('Select a note to delete')
-
+      alert('Select a note to delete');
     } else {
       if (data[this.folderindex].notes.length === 1) {
         data[this.folderindex].notes = []; 
       } else {
         data[this.folderindex].notes.splice(this.noteindex, 1);
       }
-    
       localStorage.setItem('Folders', JSON.stringify(data));
-      this.notecontent = '';
-      alert('Note has been Deleted')
+      this.notecontent = this.getNoteContent()
+      this.deleteNoteAlert()
+      alert('Note has been Deleted');
     }
-   
+  }
+  
   }
   
 
-}
+

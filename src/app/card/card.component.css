@@ -7,14 +7,14 @@
 textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid;
     border-radius: 5px;
     font-family: Arial, sans-serif;
 }
 
 #save {
     padding: 10px 20px;
-    border: none;
+    border: 2px solid;
     border-radius: 5px;
     cursor: pointer;
     background-color: rgb(217, 242, 153);
@@ -24,14 +24,18 @@ textarea {
 #delete {
     margin-left: 10px;
     padding: 10px 20px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: rgb(232, 175, 134);
+    border: 2px solid;
 }
 
-button:hover {
-    background-color: #f0f0f0;
+#save:hover {
+    background-color: green;
+}
+
+#delete:hover {
+    background-color: red;
 }
 
 

@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { ManageService } from '../manage.service';
+import { Note } from '../models/note.model';
 
 @Component({
   selector: 'app-notes',
@@ -12,11 +14,16 @@ export class NotesComponent implements OnInit, OnChanges {
   @Input() folderindex: any;
   @Output('onEmitNoteMain') emitNote = new EventEmitter<any>();
   @Input() noteindex: any;
-  @Input() randomId: any;
-  notesArray: any[] = []; 
+  @Input() changeFolder: any;
+  @Input() changeNote: any;
+  notesArray: Note[] = []; 
   clickedNoteIndex: number | null = null;
 
   constructor(private dialogRef: MatDialog, private service: ManageService) {
+    this.folderindex = null;
+    this.fetchData();
+    this.changeFolder = 1;
+    this.changeNote = 1;
    
     
   }
@@ -30,20 +37,54 @@ export class NotesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.folderindex = null;
-    this.fetchData();
+   
    
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // if (this.folderindex != '' || this.noteindex != '') {
-    //   console.log(this.folderindex);
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // if (this.folderindex != '' || this.noteindex != '') {
+  //   //   console.log(this.folderindex);
       
+  //   // }
+
+  //   if (changes.noteindex) {
+  //     console.log('CHANGE HAPPENDD!')
+  //     this.fetchData()
+  //   }
+
+  //   if (changes.folderindex || changes.noteindex || changes.randomId || 
+  //     (changes.folderindex && changes.folderindex.firstChange) 
+  //     ) {
+  //     this.fetchData();
+  //   } 
+  // }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+    console.log(this.changeFolder)
+
+    // if (this.changeFolder != 1) {
+    //   console.log('Changed')
+    //   this.fetchData()
     // }
 
-    if (changes.folderindex || changes.noteindex || changes.randomId) {
+    if (changes.changeNote ) {
+      console.log(this.noteindex)
+      this.noteindex = null
+      console.log(this.noteindex)
+    }
+    if (
+      changes.noteindex ||
+      changes.folderindex ||
+      changes.changeFolder ||
+      changes.changeNote
+      
+ 
+    ) {
       this.fetchData();
-    } 
+      console.log('FETCH')
+      
+    }
   }
   
 
@@ -51,12 +92,20 @@ export class NotesComponent implements OnInit, OnChanges {
     const data = this.service.getData();
   
     if (this.folderindex === null) {
-      this.notesArray = []
+      this.notesArray = [];
     } else {
-      this.notesArray = data[this.folderindex].notes
+      if (data[this.folderindex] && data[this.folderindex].notes) {
+        this.notesArray = data[this.folderindex].notes;
+      } else {
+        
+        this.notesArray = [];
+      }
     }
-  
   }
+  
+
+ 
+  // }
 
   openAddNotes() {
     this.dialogRef

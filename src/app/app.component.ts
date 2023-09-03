@@ -12,12 +12,13 @@ export class AppComponent {
   folderIndex2: any;
   noteIndex2: any;
   noteIndex: any;
-  randomNumber: any
+  randomNumberNote: any
+  randomNumberFolder: any;
 
   folderEmit(event: any) {
 
     this.folderIndex = event['folderIndex']
-    this.randomNumber = event['randomId']
+    // this.randomNumber = event['randomId']
 
 
   }
@@ -32,6 +33,20 @@ export class AppComponent {
   mainCardEmit(event: any) {
     console.log(event)
     this.noteIndex2 = event.funNoteIndex
+
+  }
+
+
+  deleteFolderEmit(event: any) {
+    // console.log(randomNo)
+    this.randomNumberFolder = event.randomNumber;
+    console.log(this.randomNumberFolder)
+
+  }
+
+  deleteNoteEmit(event: any) {
+    this.randomNumberNote = event.randomNumber;
+    
 
   }
 }

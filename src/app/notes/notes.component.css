@@ -80,6 +80,7 @@
 .text-container {
     max-width: 250px;
     word-wrap: break-word;
+    cursor: pointer;
 }
 
 .note-text {

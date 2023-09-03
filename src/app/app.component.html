@@ -1,5 +1,6 @@
 <div class="row">
-<app-folders (folderValueEmit)="folderEmit($event)" (deleteValueEmitter)="deleteFolderEmit($event)"></app-folders>
+<app-folders (folderValueEmit)="folderEmit($event)" (deleteValueEmitter)="deleteFolderEmit($event)"
+></app-folders>
 <app-notes [folderindex]="folderIndex"  (onEmitNoteMain)="noteEmit($event)" [noteindex]="noteIndex2" 
 [changeFolder]="randomNumberFolder" [changeNote]="randomNumberNote"
 ></app-notes>

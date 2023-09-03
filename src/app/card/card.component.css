@@ -1,19 +1,15 @@
+
 .container {
-       /* display: flex; */
+      
        justify-content: center;
-       /* align-items: center; */
        flex-direction: column;
-       margin: 100px;
+       margin: 140px 100px 100px 100px;
        width: 100%;
+       
    }
   
 
-
-
-
 textarea {
-    width: 100%;
-    padding: 10px;
     border: 2px solid;
     border-radius: 5px;
     font-family: Arial, sans-serif;
@@ -22,10 +18,11 @@ textarea {
 
 #save {
     padding: 10px 20px;
-    border: 2px solid;
     border-radius: 5px;
     cursor: pointer;
-    background-color: rgb(217, 242, 153);
+    background-color: rgb(206, 242, 115);
+    color: white;
+
 
 }
 
@@ -34,8 +31,9 @@ textarea {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    background-color: rgb(232, 175, 134);
-    border: 2px solid;
+    background-color: rgb(235, 153, 94);
+    color: white;
+   
 }
 
 #save:hover {
@@ -70,4 +68,3 @@ button:disabled {
 
 
 
-  

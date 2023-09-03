@@ -1,27 +1,31 @@
 .container {
     min-width: 400px; 
-    background-color: #ffc8dd;
+    background-color: #96B6C5;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     float: left; 
-    border-right: 2px solid;
+    border-right: 1px solid;
     overflow-y: scroll;
     min-height: 100vh;
-    position: relative; 
+    position: relative;
+    height: 100%;
     
 }
 
-
+.container h1 {
+    text-align: center;
+}
 
 .single-unit-folder {
     width: 90%;
     padding: 5px; 
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .add-folder {
-    position: absolute; 
-    bottom: 5%; 
-    right: 8%;
+    position: fixed;
+    bottom: 5%;
+    right: 80%;
 }
 
 .button-add-folder:hover {
@@ -33,18 +37,23 @@
     margin-left: auto;
     width: 70px;
     height: 70px;
-    border: 2px solid;
+    /* border: 2px solid; */
     border-radius: 50%;
     background-color: white;
-    box-shadow: 0 2px 6px rgba(208, 188, 188, 0.1);
-    transition: background-color 0.3s, transform 0.3s
+    box-shadow: 10px 6px 22px -7px rgba(0,0,0,0.75);
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
 
 }
 
 .button-title {
+
+    display: flex;
+    height: 100%;
+    align-items: center;
     text-align: center;
-    margin-top: 15px;
-    margin-left: 2px;
+    justify-content: center;
+
 }
 
 #add-folder:hover {
@@ -62,9 +71,7 @@
     justify-content: flex-end;
 }
 
-h1 {
-    margin-left: 15px;
-}
+
 
 
 
@@ -76,12 +83,18 @@ h1 {
 
 }
 
+.delete-button button {
+    cursor: pointer;
+
+}
+
 
 
 .delete-button img {
     width: 25px;
     height: 25px;
     object-fit: contain;
+    
 }
 
 
@@ -111,3 +124,9 @@ h1 {
     max-width: 250px;
     word-wrap: break-word;
 }
+
+.note-text {
+    margin-top: 45vh;
+    text-align: center;
+}
+

@@ -1,6 +1,13 @@
 .container {
-    margin: 100px;
-}
+       /* display: flex; */
+       justify-content: center;
+       /* align-items: center; */
+       flex-direction: column;
+       margin: 100px;
+       width: 100%;
+   }
+  
+
 
 
 
@@ -10,6 +17,7 @@ textarea {
     border: 2px solid;
     border-radius: 5px;
     font-family: Arial, sans-serif;
+    max-width: 70%;
 }
 
 #save {
@@ -40,7 +48,9 @@ textarea {
 
 
 .buttonContainer {
+    display: flex;
     margin-top: 15px;
+    
 }
 
 
@@ -49,3 +59,15 @@ button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.box-card {
+    width: 100%;
+    text-align: center;
+   
+   
+}
+
+
+
+
+  

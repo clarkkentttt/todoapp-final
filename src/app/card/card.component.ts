@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, EventEmitter,Output } from '@angular/core';
 import { ManageService } from '../manage.service';
-import { FormsModule } from '@angular/forms'
+
 import { Note } from '../models/note.model';
 
 @Component({
@@ -45,6 +45,13 @@ export class CardComponent implements OnInit, OnChanges {
     if (changes.noteindex && this.noteindex != null && this.folderindex != null) {
       this.notecontent = this.getNoteContent()
     }
+
+ 
+   
+    if (this.noteindex != null ) {
+
+      this.notesArray = this.getNotesArray()
+    }
   }
 
   ngOnInit(): void {
@@ -65,11 +72,6 @@ export class CardComponent implements OnInit, OnChanges {
     }  
     
 
-  // getNoteContent () {
-  //   let data = this.service.getData();
-  //   return data[this.folderindex].notes[this.noteindex].noteContent
-
-  // }
 
 
   getNoteContent() {
@@ -84,7 +86,7 @@ export class CardComponent implements OnInit, OnChanges {
     ) {
       return data[this.folderindex].notes[this.noteindex].noteContent;
     } else {
-      return ''; // Return an empty string or handle the undefined case gracefully
+      return ''; 
     }
   }
   
@@ -101,44 +103,6 @@ export class CardComponent implements OnInit, OnChanges {
     }
 
   }
-
-  // deleteNoteContent() {
-  //   let data = this.service.getData();
-    
-  //   if (this.noteindex === undefined) {
-  //     alert('Select a note to delete')
-
-  //   } else {
-  //     if (data[this.folderindex].notes.length === 1) {
-  //       data[this.folderindex].notes = []; 
-  //     } else {
-  //       data[this.folderindex].notes.splice(this.noteindex, 1);
-  //     }
-  //     localStorage.setItem('Folders', JSON.stringify(data));
-    
-  //     this.notecontent = '';
-  //     alert('Note has been Deleted')
-  //   }
-   
-
-  // deleteNoteContent() {
-  //   let data = this.service.getData();
-  //   if (this.noteindex === undefined) {
-  //     alert('Select a note to delete');
-  //   } else {
-  //     if (data[this.folderindex].notes.length === 1) {
-  //       data[this.folderindex].notes = []; 
-  //       this.notecontent = ''
-  //       this.deleteNoteAlert()
-  //     } else {
-  //       data[this.folderindex].notes.splice(this.noteindex, 1);
-  //     }
-  //     localStorage.setItem('Folders', JSON.stringify(data));
-  //     this.notecontent = this.getNoteContent()
-  //     this.deleteNoteAlert()
-  //     alert('Note has been Deleted');
-  //   }
-  // }
 
 
   deleteNoteContent() {
@@ -169,7 +133,6 @@ export class CardComponent implements OnInit, OnChanges {
     }
     return [];
   }
-
   
   }
   

@@ -1,7 +1,5 @@
-
-
 <div class="container">
-        <ng-container *ngIf="notesArray.length > 0; else selectNoteMessage">
+        <div *ngIf="notesArray.length > 0; else selectNoteMessage">
             <div>
                 <textarea rows="45" cols="105" [(ngModel)]="notecontent"></textarea>
             </div>
@@ -9,13 +7,9 @@
                 <button id="save" (click)="saveNoteContent()">Save</button>
                 <button id="delete" (click)="deleteNoteContent(); funCardEmit()">Delete</button>
             </div>
-        </ng-container>
+        </div>
         <ng-template #selectNoteMessage>
-            <div class="box-card">
                 <app-box-card></app-box-card>
-
-            </div>
-            
         </ng-template>
 </div>
 
@@ -23,16 +17,4 @@
 
 
 
-<!-- <div class="container">
-    <div>
-        <textarea rows="45" cols="105" [(ngModel)]="notecontent"></textarea>
-    </div>
-    <div class="buttonContainer">
-        <button id="save" (click)="saveNoteContent()">Save</button>
-        <button id="delete" (click)="deleteNoteContent()">Delete</button>
-    </div>
-</div>
 
-<!-- <ng-template #cardContent>
-    <div>Hi works</div>
-</ng-template> --> 

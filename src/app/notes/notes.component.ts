@@ -41,32 +41,12 @@ export class NotesComponent implements OnInit, OnChanges {
    
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   // if (this.folderindex != '' || this.noteindex != '') {
-  //   //   console.log(this.folderindex);
-      
-  //   // }
 
-  //   if (changes.noteindex) {
-  //     console.log('CHANGE HAPPENDD!')
-  //     this.fetchData()
-  //   }
-
-  //   if (changes.folderindex || changes.noteindex || changes.randomId || 
-  //     (changes.folderindex && changes.folderindex.firstChange) 
-  //     ) {
-  //     this.fetchData();
-  //   } 
-  // }
 
   ngOnChanges(changes: SimpleChanges): void {
     
-    console.log(this.changeFolder)
+    console.log(this.notesArray)
 
-    // if (this.changeFolder != 1) {
-    //   console.log('Changed')
-    //   this.fetchData()
-    // }
 
     if (changes.changeNote ) {
       console.log(this.noteindex)
@@ -88,20 +68,43 @@ export class NotesComponent implements OnInit, OnChanges {
   }
   
 
+  // fetchData() {
+  //   const data = this.service.getData();
+  
+  //   if (this.folderindex === null) {
+  //     this.notesArray = [];
+  //   } else {
+  //     if (data[this.folderindex] && data[this.folderindex].notes) {
+  //       this.notesArray = data[this.folderindex].notes;
+  //     } else {
+        
+  //       this.notesArray = [];
+  //     }
+  //   }
+  // }
+
   fetchData() {
     const data = this.service.getData();
   
     if (this.folderindex === null) {
       this.notesArray = [];
+      this.clickedNoteIndex = null;
+      this.noteindex = null // Set clickedNoteIndex to null when folderindex is null
     } else {
       if (data[this.folderindex] && data[this.folderindex].notes) {
         this.notesArray = data[this.folderindex].notes;
+        if (this.notesArray.length === 0) {
+          this.clickedNoteIndex = null; 
+          this.noteindex = null;
+        }
       } else {
-        
         this.notesArray = [];
+        this.clickedNoteIndex = null;
+        this.noteindex = null
       }
     }
   }
+  
   
 
  

@@ -1,6 +1,22 @@
 
+
+
+
 .row {
     display: flex;
-    justify-content: left;
+    /* justify-content: left; */
 
+}
+
+.first-row, .second-row {
+    flex: 1;
+}
+
+.third-row {
+    flex: 2;
+}
+
+.third-row-textarea {
+    flex: 2;
+    overflow: hidden;
 }

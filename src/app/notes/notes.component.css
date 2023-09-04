@@ -10,6 +10,7 @@
     position: relative; 
     overflow-y: scroll;
     height: 100%;
+    scrollbar-width: none;
     
 }
 
@@ -34,7 +35,7 @@
 .add-note {
     position: fixed; 
     bottom: 5%; 
-    right: 59.3%;
+    right: 50%;
 }
 
 .button-add-notes:hover {

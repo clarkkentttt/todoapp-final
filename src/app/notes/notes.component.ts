@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { CheckboxControlValueAccessor } from '@angular/forms';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { ManageService } from '../manage.service';
@@ -24,7 +23,6 @@ export class NotesComponent implements OnInit, OnChanges {
     this.fetchData();
     this.changeFolder = 1;
     this.changeNote = 1;
-   
     
   }
 
@@ -45,51 +43,33 @@ export class NotesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     
-    console.log(this.notesArray)
 
 
     if (changes.changeNote ) {
       console.log(this.noteindex)
       this.noteindex = null
-      console.log(this.noteindex)
+    
     }
     if (
       changes.noteindex ||
       changes.folderindex ||
       changes.changeFolder ||
       changes.changeNote
-      
- 
     ) {
       this.fetchData();
-      console.log('FETCH')
       
     }
   }
   
 
-  // fetchData() {
-  //   const data = this.service.getData();
-  
-  //   if (this.folderindex === null) {
-  //     this.notesArray = [];
-  //   } else {
-  //     if (data[this.folderindex] && data[this.folderindex].notes) {
-  //       this.notesArray = data[this.folderindex].notes;
-  //     } else {
-        
-  //       this.notesArray = [];
-  //     }
-  //   }
-  // }
 
-  fetchData() {
+fetchData() {
     const data = this.service.getData();
   
     if (this.folderindex === null) {
       this.notesArray = [];
       this.clickedNoteIndex = null;
-      this.noteindex = null // Set clickedNoteIndex to null when folderindex is null
+      this.noteindex = null 
     } else {
       if (data[this.folderindex] && data[this.folderindex].notes) {
         this.notesArray = data[this.folderindex].notes;
@@ -108,9 +88,9 @@ export class NotesComponent implements OnInit, OnChanges {
   
 
  
-  // }
 
-  openAddNotes() {
+
+openAddNotes() {
     this.dialogRef
       .open(AddNoteComponent, {
         data: this.folderindex,

@@ -8,6 +8,7 @@
     min-height: 100vh;
     position: relative;
     height: 100%;
+    scrollbar-width: none;
     
 }
 
@@ -25,7 +26,7 @@
 .add-folder {
     position: fixed;
     bottom: 5%;
-    right: 80%;
+    right: 77%;
 }
 
 .button-add-folder:hover {

@@ -1,7 +1,6 @@
 import { Component,  Inject  } from '@angular/core';
 import { ManageService } from '../manage.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { Note } from '../models/note.model';
 
 @Component({
@@ -14,7 +13,6 @@ export class AddNoteComponent {
 
   constructor(private service: ManageService, @Inject(MAT_DIALOG_DATA) public value: any, private dialogRef: MatDialog) {}
 
-    
   generateId() {
     return Date.now();
   }
@@ -26,7 +24,10 @@ export class AddNoteComponent {
     noteName: event['note-name'], 
     noteContent: ''
   }
-  if (event['note-name'] === '') {
+
+  console.log(this.value)
+  
+  if (event['note-name'] === '' || this.value === '') {
     alert('Please select the note name');
     
   } else {

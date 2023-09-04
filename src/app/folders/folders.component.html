@@ -2,7 +2,7 @@
 
     <h1>Folders</h1>
     <div *ngIf="folderArray.length > 0; else folderText"></div>
-    <div class="single-unit-folder" *ngFor="let folder of this.folderArray; let i = index">
+    <div class="single-unit-folder" *ngFor="let folder of folderArray; let i = index">
                 <div class="folder-container"
                 (click)="onEmitFolder(i)"
                 >

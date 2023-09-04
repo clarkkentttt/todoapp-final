@@ -49,7 +49,6 @@ export class CardComponent implements OnInit, OnChanges {
  
    
     if (this.noteindex != null ) {
-
       this.notesArray = this.getNotesArray()
     }
   }

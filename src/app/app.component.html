@@ -1,26 +1,9 @@
-<!-- <div class="row">
-<app-folders (folderValueEmit)="folderEmit($event)" (deleteValueEmitter)="deleteFolderEmit($event)"
-></app-folders>
-<app-notes [folderindex]="folderIndex"  (onEmitNoteMain)="noteEmit($event)" [noteindex]="noteIndex2" 
-[changeFolder]="randomNumberFolder" [changeNote]="randomNumberNote"
-></app-notes>
-
-<app-box-card *ngIf="noteIndex === undefined; else appCard "></app-box-card>
-<ng-template #appCard>
-    <app-card [folderindex]="folderIndex2" [noteindex]="noteIndex" (cardEmitter)="mainCardEmit($event)" (deleteNoteEmitter)="deleteNoteEmit($event)"></app-card>
-</ng-template>
-
-
-</div>
- -->
-
 <div class="row">
     <app-folders class="first-row" (folderValueEmit)="folderEmit($event)" (deleteValueEmitter)="deleteFolderEmit($event)"
     ></app-folders>
     <app-notes class="second-row" [folderindex]="folderIndex"  (onEmitNoteMain)="noteEmit($event)" [noteindex]="noteIndex2" 
     [changeFolder]="randomNumberFolder" [changeNote]="randomNumberNote"
     ></app-notes>
-    
     <app-box-card class="third-row" *ngIf="noteIndex === undefined; else appCard "></app-box-card>
     <ng-template #appCard>
         <app-card class="third-row-textarea" [folderindex]="folderIndex2" [noteindex]="noteIndex" (cardEmitter)="mainCardEmit($event)" (deleteNoteEmitter)="deleteNoteEmit($event)"></app-card>
